@@ -1,0 +1,39 @@
+---
+- hosts: all
+  vars:
+    home: "{{ ansible_env.HOME }}"
+    utils:
+      - htop
+      - gnome-terminal
+      - zsh
+      - tmux
+      - vim
+      - git
+
+    projects:
+      - path: love-polygon
+        git: git@github.com:gasnew/love-polygon.git
+
+      - path: lancenger
+        git: git@github.com:gasnew/lancenger.git
+
+  tasks:
+    - name: Install dev utils
+      apt: name={{ item }} state=present update_cache=yes
+      with_items: "{{ utils }}"
+      become: yes
+
+    - name: Clone dotfiles
+      # Set force and update to "no" so we don't overwrite pending local changes
+      git: repo=git@github.com:gasnew/dotfiles.git dest={{ home }}/dotfiles force=no update=no accept_hostkey=yes
+
+    - name: Symlink dotfiles
+      file: path={{ home }}/.{{ item }} src={{ home }}/dotfiles/.{{ item }} state=link
+      with_items:
+        - gitignore
+        - vimrc
+        - tmux.conf
+
+    - name: Clone projects from github
+      git: repo={{ item.git }} dest={{ home }}/{{ item.path }}
+      with_items: "{{ projects }}"
