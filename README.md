@@ -8,4 +8,16 @@ sudo apt-get install ansible
 ```
 
 ## Run
-bin/run
+
+If it's your first time running this playbook, run this to install role
+dependencies:
+
+```bash
+bin/set-up.sh
+```
+
+and then to run the playbook itself, run this:
+
+```bash
+bin/run.sh
+```
