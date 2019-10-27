@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Gnome Terminal
+#GenericName=Terminal
+Comment=Gnome Terminal for ChromeOS
+Exec=/usr/bin/gnome-terminal
+Terminal=false
+Type=Application
+#Encoding=UTF-8
+Icon=/usr/share/icons/Adwaita/scalable/apps/utilities-terminal-symbolic.svg
+Categories=System;TerminalEmulator;Utility;
+Keywords=shell;prompt;command;commandline;cmd;

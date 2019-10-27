@@ -4,9 +4,15 @@
   with_items: "{{ utils }}"
   become: yes
 
+- name: Configure gnome-terminal desktop entry
+  become: yes
+  file:
+    src: GnomeTerminal.desktop
+    dest: /usr/share/applications/GnomeTerminal.desktop
+
 - name: Clone dotfiles
   # Set force and update to "no" so we don't overwrite pending local changes
-  git: repo=git@github.com:gasnew/dotfiles.git dest={{ home }}/dotfiles force=no update=no accept_hostkey=yes
+  git: repo=git@github.com:gasnew/dotfiles.git dest={{ home }}/dotfiles force=no update=no
 
 - name: Symlink dotfiles
   file: path={{ home }}/.{{ item }} src={{ home }}/dotfiles/.{{ item }} state=link
@@ -15,6 +21,9 @@
     - vimrc
     - tmux.conf
 
+- name: Make vim undo directory
+  file: path={{ home }}/.vim/undo state=directory
+
 - name: Clone projects from github
-  git: repo={{ item.git }} dest={{ home }}/{{ item.path }}
+  git: repo={{ item.git }} dest={{ home }}/{{ item.path }} update=no
   with_items: "{{ projects }}"

@@ -3,12 +3,13 @@
   vars:
     home: "{{ ansible_env.HOME }}"
     utils:
-      - htop
+      - silversearcher-ag
+      - git
       - gnome-terminal
-      - zsh
+      - htop
       - tmux
       - vim
-      - git
+      - zsh
 
     projects:
       - path: love-polygon
@@ -17,12 +18,22 @@
       - path: lancenger
         git: git@github.com:gasnew/lancenger.git
 
-
   roles:
+    - common
     - role: viasite-ansible.zsh
       become: yes
       vars:
+        zsh_aliases:
+          - { alias: 'gs', action: 'git status' }
+          - { alias: 'gl', action: 'git log' }
         zsh_antigen_bundles_extras:
+          - git
           - joel-porquet/zsh-dircolors-solarized
-        zsh_autosuggestions_bind_key: "^U"
-    - common
+        zsh_autosuggestions_bind_key: "^T"
+    - role: tvieira.powerline-fonts
+      vars:
+        all_users:
+          - user: garrettsnewman
+            homedir: "{{ home }}"
+        all_fonts:
+          - DroidSansMono
