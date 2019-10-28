@@ -3,12 +3,13 @@
   vars:
     home: "{{ ansible_env.HOME }}"
     utils:
-      - silversearcher-ag
       - git
       - gnome-terminal
       - htop
+      - silversearcher-ag
       - tmux
       - vim
+      - yarn
       - zsh
 
     projects:

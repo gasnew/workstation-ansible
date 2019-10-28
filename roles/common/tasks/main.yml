@@ -18,8 +18,9 @@
   file: path={{ home }}/.{{ item }} src={{ home }}/dotfiles/.{{ item }} state=link
   with_items:
     - gitignore
-    - vimrc
     - tmux.conf
+    - vimrc
+    - zshrc.local
 
 - name: Make vim undo directory
   file: path={{ home }}/.vim/undo state=directory
