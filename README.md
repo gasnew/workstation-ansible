@@ -8,7 +8,22 @@ so this repo is a complete and sufficient spec for my workstation.
 
 ## Install
 
+### Debian 9 (stretch)
+
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-debian
+This ansible playbook requires `ansible-playbook` 2.7 or higher, so 
+dd the following line to /etc/apt/sources.list:
+
+deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+Then run these commands:
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+$ sudo apt update
+$ sudo apt install ansible
+
+
 ```bash
+sudo apt-get update
 sudo apt-get install ansible
 ```
 

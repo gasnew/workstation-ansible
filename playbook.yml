@@ -6,6 +6,7 @@
       - git
       - gnome-terminal
       - htop
+      - nodejs
       - silversearcher-ag
       - tmux
       - vim
@@ -20,6 +21,11 @@
         git: git@github.com:gasnew/lancenger.git
 
   roles:
+    - role: fubarhouse.yarn
+      vars:
+        # The default value for this in the role causes an error, so we just
+        # set it to an empty array here
+        yarn_global_packages: []
     - common
     - role: viasite-ansible.zsh
       become: yes

@@ -1,7 +1,6 @@
 ---
 - name: Install dev utils
-  apt: name={{ item }} state=present update_cache=yes
-  with_items: "{{ utils }}"
+  apt: name={{ utils }} state=present update_cache=yes
   become: yes
 
 - name: Configure gnome-terminal desktop entry

@@ -1,2 +1,4 @@
 - src: viasite-ansible.zsh
 - src: tvieira.powerline-fonts
+- src: fubarhouse.nodejs
+- src: fubarhouse.yarn
