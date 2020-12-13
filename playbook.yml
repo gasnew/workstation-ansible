@@ -40,7 +40,7 @@
     - role: tvieira.powerline-fonts
       vars:
         all_users:
-          - user: garrettsnewman
+          - user: gnew
             homedir: "{{ home }}"
         all_fonts:
           - DroidSansMono

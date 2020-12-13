@@ -60,3 +60,10 @@ its default configuration via the UI:
 I picked up some productivity tips while setting this up.
 
 * CTRL+R: FZF through shell history
+
+
+
+failed things
+
+- copying Gnome app icon
+- git ssh key
